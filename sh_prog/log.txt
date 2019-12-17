@@ -1,0 +1,2 @@
+Compile obj/smart_home.o
+makefile:44: recipe for target 'obj/smart_home.o' failed

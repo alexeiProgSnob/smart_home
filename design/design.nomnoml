@@ -1,0 +1,23 @@
+#bgColor: red
+[smart home||]
+[init file reader||]
+[init file parser||]
+[dll loader template ||]
+[hub||]
+[agent abstract class||]
+[subscriber||]
+[publisher||]
+[event handler||]
+
+[hub]-->[agent abstract class]
+[hub]o-[subscriber]
+[hub]o-[publisher]
+[hub]o-[event handler]
+[agent abstract class]-->[subscriber]
+[agent abstract class]-->[publisher]
+
+[init file reader]o-[init file parser]
+[smart home]-->[init file reader]
+[smart home]o-[dll loader template]
+[smart home]o-*[agent abstract class]
+[smart home]o-[hub]

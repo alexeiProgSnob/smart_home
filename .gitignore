@@ -1,0 +1,14 @@
+*.so
+*.dll
+*.o
+*.exe
+*.out
+.vscode
+*.idea
+CMake*
+cmake*
+.autotools
+.cproject
+.project
+.settings
+smart_home_app*
