@@ -1,38 +1,38 @@
 #include "ambient_fire.h"
 #include <iostream>
 
-ambient_fire_class::ambient_fire_class()
+AmbientFireClass::AmbientFireClass()
 :m_publisher(nullptr),
- m_run_agent(true) {
+ m_runAgent(true) {
 }
 
-ambient_fire_class::~ambient_fire_class() {
+AmbientFireClass::~AmbientFireClass() {
 }
 
-void ambient_fire_class::alart_of_fire() {
-    std::shared_ptr<AgentDataStruct> my_data = get_agentData();
-    while (m_run_agent == true) {
-        std::shared_ptr<EventClass> fire_event(new EventClass(
+void AmbientFireClass::AlartOfFire() {
+    std::shared_ptr<AgentDataStruct> myData = GetAgentData();
+    while (m_runAgent == true) {
+        std::shared_ptr<EventClass> fireEvent(new EventClass(
             "Fire",
-            my_data->m_floor,
-            std::move(my_data->m_room),
+            myData->m_floor,
+            std::move(myData->m_room),
             EventClass::HIGH));
-        std::this_thread::sleep_for (std::chrono::seconds(20));
-        m_publisher->publish(fire_event);
+        std::this_thread::sleep_for(std::chrono::seconds(20));
+        m_publisher->publish(fireEvent);
     }
 }
 
 
-void ambient_fire_class::InitAgent(IPublisherClass& _publisher, ISubscriberClass& _subscriber) {
+void AmbientFireClass::InitAgent(IPublisherClass& _publisher, ISubscriberClass& _subscriber) {
     std::cout<<"InitAgent"<<std::endl;
     m_publisher = &_publisher;
 }
 
-void ambient_fire_class::run_agent() {
+void AmbientFireClass::RunAgent() {
     std::cout<<"ambient_fire run_agent"<<std::endl;
-    alart_of_fire();
+    AlartOfFire();
 }
 
-void ambient_fire_class::shutdown_agent() {
-    m_run_agent = false;
+void AmbientFireClass::ShutdownAgent() {
+    m_runAgent = false;
 }

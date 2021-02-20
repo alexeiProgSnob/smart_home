@@ -9,37 +9,37 @@ SubscriptionStruct::~SubscriptionStruct() {
 }
 
 SubscriptionStruct::SubscriptionStruct(size_t _floor,const std::string& _room) {
-    set_floor_room(_floor, _room);
+    SetFloorRoom(_floor, _room);
 }
 
-SubscriptionStruct::SubscriptionStruct(const floor_room_pair_t& _floor_room) {
-    set_floor_room(_floor_room);
+SubscriptionStruct::SubscriptionStruct(const FloorRoomPair_t& _floorRoom) {
+    SetFloorRoom(_floorRoom);
 }
 
-SubscriptionStruct::SubscriptionStruct(size_t _floor,const room_stl_t& _rooms) {
-    set_floor_rooms(_floor, _rooms);
+SubscriptionStruct::SubscriptionStruct(size_t _floor,const RoomStl_t& _rooms) {
+    SetFloorRooms(_floor, _rooms);
 }
 
-SubscriptionStruct::SubscriptionStruct(const floor_room_stl_t& _floor_room_cnt) {
-    set_floor_rooms(_floor_room_cnt);
+SubscriptionStruct::SubscriptionStruct(const FloorRoomStl_t& _floorRoomCnt) {
+    SetFloorRooms(_floorRoomCnt);
 }
 
-void SubscriptionStruct::set_floor_room(size_t _floor,const std::string& _room) {
-    m_floor_room_cnt[_floor].push_back(_room);
+void SubscriptionStruct::SetFloorRoom(size_t _floor,const std::string& _room) {
+    m_floorRoomCnt[_floor].push_back(_room);
 }
 
-void SubscriptionStruct::set_floor_room(const floor_room_pair_t& _floor_room) {
-    set_floor_room(_floor_room.first, _floor_room.second);
+void SubscriptionStruct::SetFloorRoom(const FloorRoomPair_t& _floorRoom) {
+    SetFloorRoom(_floorRoom.first, _floorRoom.second);
 }
 
-void SubscriptionStruct::set_floor_rooms(size_t _floor,const room_stl_t& _rooms) {
-    auto insert_all_rooms = [this, _floor](const std::string& _room) { set_floor_room(_floor, _room); };
-    std::for_each(_rooms.begin(), _rooms.end(), insert_all_rooms);
+void SubscriptionStruct::SetFloorRooms(size_t _floor,const RoomStl_t& _rooms) {
+    auto insertAllRooms = [this, _floor](const std::string& _room) { SetFloorRoom(_floor, _room); };
+    std::for_each(_rooms.begin(), _rooms.end(), insertAllRooms);
 }
 
-void SubscriptionStruct::set_floor_rooms(const floor_room_stl_t& _floor_room_cnt) {
-    auto all_floors_rooms = [this](const std::pair<size_t,room_stl_t>& _floor_rooms) { 
-            set_floor_rooms(_floor_rooms.first, _floor_rooms.second);
+void SubscriptionStruct::SetFloorRooms(const FloorRoomStl_t& _floorRoomCnt) {
+    auto allFloorsRooms = [this](const std::pair<size_t,RoomStl_t>& _floorRooms) { 
+            SetFloorRooms(_floorRooms.first, _floorRooms.second);
         };
-    std::for_each(_floor_room_cnt.begin(), _floor_room_cnt.end(), all_floors_rooms);
+    std::for_each(_floorRoomCnt.begin(), _floorRoomCnt.end(), allFloorsRooms);
 }

@@ -12,7 +12,7 @@ smartHomeClass::smartHomeClass()
 }
 
 smartHomeClass::~smartHomeClass() {
-    auto shoutdown_all_agent = [](std::shared_ptr<AgentAbstractClass> _agent) { _agent->shutdown_agent();};
+    auto shoutdown_all_agent = [](std::shared_ptr<AgentAbstractClass> _agent) { _agent->ShutdownAgent();};
     std::for_each(m_agents.begin(), m_agents.end(), shoutdown_all_agent);
 }
 

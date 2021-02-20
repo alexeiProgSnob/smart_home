@@ -18,7 +18,7 @@ private:
 
     struct comparison {
         bool operator()(const EventPtr& _lhs, const EventPtr& _rhs){
-            return (_lhs->get_level() < _rhs->get_level());
+            return (_lhs->GetLevel() < _rhs->GetLevel());
         }
     };
 

@@ -24,16 +24,16 @@ HubClass::~HubClass() {
 }
 
 void HubClass::p_SubscribeForTerminate() {
-    SubscriptionStruct fire_sub(0, "0");
+    SubscriptionStruct fireDub(0, "0");
     auto call_back = [this](std::shared_ptr<EventClass> _event) { 
-        if (_event->get_type() == "terminate") {
+        if (_event->GetType() == "terminate") {
             m_terminate = true;
         }
     };
 
-    fire_sub.set_call_back(call_back);
-    fire_sub.set_type("terminate");
-    m_subscriber.Subscribe(fire_sub);
+    fireDub.SetCallBack(call_back);
+    fireDub.SetType("terminate");
+    m_subscriber.Subscribe(fireDub);
 }
 
 void HubClass::InitHubCenter(AgentsContainer& _agents) {
@@ -42,7 +42,7 @@ void HubClass::InitHubCenter(AgentsContainer& _agents) {
     m_threadPool.InitThreadPool(_agents.size());
     auto init_do = [this](std::shared_ptr<AgentAbstractClass>& _agent) { 
         _agent->InitAgent(m_publish, m_subscriber);
-        Task task = [_agent](){ _agent->run_agent(); };
+        Task task = [_agent](){ _agent->RunAgent(); };
         m_threadPool.SubmitTask(alexei_prog_snob::ThreadPool<Task>::MID, task);
     };
     std::for_each(_agents.begin(), _agents.end(), init_do);

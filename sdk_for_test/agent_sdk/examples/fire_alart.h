@@ -11,13 +11,13 @@ public:
     fire_alart_class();
     virtual ~fire_alart_class();
     virtual void InitAgent(IPublisherClass& _publisher, ISubscriberClass& _subscriber);
-    virtual void run_agent();   
-    virtual void recieve_event(std::shared_ptr<EventClass> _event);
-    virtual void shutdown_agent();
+    virtual void RunAgent();   
+    virtual void RecieveEvent(std::shared_ptr<EventClass> _event);
+    virtual void ShutdownAgent();
 private:
 //   ISubscriberClass* m_sub;
-    alexei_prog_snob::safe_queue<std::shared_ptr<EventClass> > m_my_recieved_events;
-    bool m_run_agent;
+    alexei_prog_snob::SafeQueue<std::shared_ptr<EventClass> > m_myRecievedEvents;
+    bool m_runAgent;
 };
 
 

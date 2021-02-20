@@ -27,11 +27,11 @@ public:
 	}
 
 	virtual void InitAgent(IPublisherClass& _publisher, ISubscriberClass& _subscriber) = 0; 
-	virtual void run_agent() = 0; 
-	virtual void recieve_event(std::shared_ptr<EventClass> _event) {}
-	virtual void shutdown_agent() {}
+	virtual void RunAgent() = 0; 
+	virtual void RecieveEvent(std::shared_ptr<EventClass> _event) {}
+	virtual void ShutdownAgent() {}
 protected:
-	std::shared_ptr<AgentDataStruct> get_agentData() {
+	std::shared_ptr<AgentDataStruct> GetAgentData() {
 		return m_agentData;
 	}
 

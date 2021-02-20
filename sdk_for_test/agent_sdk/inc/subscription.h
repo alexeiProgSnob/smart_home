@@ -11,44 +11,44 @@
 
 struct SubscriptionStruct {
 public:
-    typedef typename std::vector<std::string>                       room_stl_t;
-    typedef typename std::pair<size_t, std::string>                 floor_room_pair_t;
-    typedef typename std::map<size_t, std::vector<std::string> >    floor_room_stl_t;
+    typedef typename std::vector<std::string>                       RoomStl_t;
+    typedef typename std::pair<size_t, std::string>                 FloorRoomPair_t;
+    typedef typename std::map<size_t, std::vector<std::string> >    FloorRoomStl_t;
     SubscriptionStruct();
     ~SubscriptionStruct();
     
     SubscriptionStruct(size_t _floor,const std::string& _room);
-    SubscriptionStruct(const floor_room_pair_t& _floor_room);
-    SubscriptionStruct(size_t _floor,const room_stl_t& _rooms);
-    SubscriptionStruct(const floor_room_stl_t& _floor_room_cnt);
+    SubscriptionStruct(const FloorRoomPair_t& _floorRoom);
+    SubscriptionStruct(size_t _floor,const RoomStl_t& _rooms);
+    SubscriptionStruct(const FloorRoomStl_t& _floorRoomCnt);
     
-    void set_floor_room(size_t _floor,const std::string& _room);
-    void set_floor_room(const floor_room_pair_t& _floor_room);
-    void set_floor_rooms(size_t _floor,const room_stl_t& _rooms);
-    void set_floor_rooms(const floor_room_stl_t& _floor_room_cnt);
+    void SetFloorRoom(size_t _floor,const std::string& _room);
+    void SetFloorRoom(const FloorRoomPair_t& _floorRoom);
+    void SetFloorRooms(size_t _floor,const RoomStl_t& _rooms);
+    void SetFloorRooms(const FloorRoomStl_t& _floorRoomCnt);
 
-    inline void set_type(const std::string& _type) {
+    inline void SetType(const std::string& _type) {
         m_type = _type;
     }
 
-    inline void set_call_back(std::function<void(std::shared_ptr<EventClass>)> _call_back) {
+    inline void SetCallBack(std::function<void(std::shared_ptr<EventClass>)> _call_back) {
         m_call_back = _call_back;
     }
 
-    inline const floor_room_stl_t& get_floor_room_container() const {
-        return m_floor_room_cnt;
+    inline const FloorRoomStl_t& get_floorRoom_container() const {
+        return m_floorRoomCnt;
     }
 
-    inline const std::string& get_type() const {
+    inline const std::string& GetType() const {
         return m_type;
     }
 
-    inline std::function<void(std::shared_ptr<EventClass>)> get_call_back() const {
+    inline std::function<void(std::shared_ptr<EventClass>)> GetCallBack() const {
         return m_call_back;
     }
 
 private:
-    std::map<size_t, std::vector<std::string> > m_floor_room_cnt;
+    std::map<size_t, std::vector<std::string> > m_floorRoomCnt;
     std::string m_type;
     std::function<void(std::shared_ptr<EventClass>)> m_call_back;
     // Uncopyable

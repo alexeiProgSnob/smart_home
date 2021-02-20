@@ -5,21 +5,21 @@
 #include <memory>
 #include <thread>
 
-class ambient_fire_class : public AgentAbstractClass {
+class AmbientFireClass : public AgentAbstractClass {
 public:
-    ambient_fire_class();
-    virtual ~ambient_fire_class();
+    AmbientFireClass();
+    virtual ~AmbientFireClass();
    	virtual void InitAgent(IPublisherClass& _publisher, ISubscriberClass& _subscriber);
-    virtual void run_agent();   
-    virtual void shutdown_agent(); 
+    virtual void RunAgent();   
+    virtual void ShutdownAgent(); 
 private:
-    void alart_of_fire();    
+    void AlartOfFire();    
     IPublisherClass* m_publisher;
-    bool m_run_agent;
+    bool m_runAgent;
 };
 
 extern "C" AgentAbstractClass* create() {
-    return new ambient_fire_class;
+    return new AmbientFireClass;
 }
 
 
