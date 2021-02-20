@@ -5,26 +5,26 @@
 #include <memory>
 #include "safe_queue.h"
 
-class queue_publisher_class : public ipublisher_class {
+class QueuePublisherClass : public IPublisherClass {
 public:
-    queue_publisher_class();
-    ~queue_publisher_class();
-    void publish(std::shared_ptr<event_class> _event);
+    QueuePublisherClass();
+    ~QueuePublisherClass();
+    void publish(std::shared_ptr<EventClass> _event);
 
     // no levels blocking
-    std::shared_ptr<event_class> get_event();
+    std::shared_ptr<EventClass> GetEvent();
 private:
-    typedef typename std::shared_ptr<event_class> event_ptr;
+    typedef typename std::shared_ptr<EventClass> EventPtr;
 
     struct comparison {
-        bool operator()(const event_ptr& _lhs, const event_ptr& _rhs){
+        bool operator()(const EventPtr& _lhs, const EventPtr& _rhs){
             return (_lhs->get_level() < _rhs->get_level());
         }
     };
 
-    alexei_prog_snob::safe_priority_queue<
-    event_ptr,
-    std::vector<event_ptr>,
+    alexei_prog_snob::SafePriorityQueue<
+    EventPtr,
+    std::vector<EventPtr>,
     comparison
     > m_events;
 };

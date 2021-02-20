@@ -7,9 +7,9 @@
 
 #include "subscription.h"
 
-class isubscriber_class {
+class ISubscriberClass {
 public:
-    virtual void subscribe(const subscription_struct& _subscription) = 0;
+    virtual void Subscribe(const SubscriptionStruct& _subscription) = 0;
 };
 
 #endif /* I_SUBSCRIBER_H_ */

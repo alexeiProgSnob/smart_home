@@ -10,21 +10,21 @@ ambient_fire_class::~ambient_fire_class() {
 }
 
 void ambient_fire_class::alart_of_fire() {
-    std::shared_ptr<agent_data_struct> my_data = get_agent_data();
+    std::shared_ptr<AgentDataStruct> my_data = get_agentData();
     while(m_run_agent == true) {
-        std::shared_ptr<event_class> fire_event(new event_class(
+        std::shared_ptr<EventClass> fire_event(new EventClass(
             "Fire",
             my_data->m_floor,
             std::move(my_data->m_room),
-            event_class::HIGH));
+            EventClass::HIGH));
         std::this_thread::sleep_for(std::chrono::seconds(20));
         m_publisher->publish(fire_event);
     }
 }
 
 
-void ambient_fire_class::init_agent(ipublisher_class& _publisher, isubscriber_class& _subscriber) {
-    std::cout<<"init_agent"<<std::endl;
+void ambient_fire_class::InitAgent(IPublisherClass& _publisher, ISubscriberClass& _subscriber) {
+    std::cout<<"InitAgent"<<std::endl;
     m_publisher = &_publisher;
 }
 

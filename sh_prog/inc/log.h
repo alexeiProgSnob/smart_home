@@ -4,10 +4,10 @@
 #include <iostream>
 #include <string>
 
-class log_class {
+class LogClass {
 public:
-    log_class() {}
-    ~log_class() {}
+    LogClass() {}
+    ~LogClass() {}
     void log_i(const std::string& _msg) const{
         std::cout<<_msg<<std::endl;
     }
@@ -19,7 +19,7 @@ private:
 
 };
 
-const log_class g_log;
+const LogClass g_log;
 
 #define LOG_I(MSG) do{ g_log.log_i(MSG); }while(0);
 #define LOG_E(MSG) do{ g_log.log_e(MSG); }while(0);

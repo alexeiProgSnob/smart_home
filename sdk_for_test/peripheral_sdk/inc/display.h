@@ -3,9 +3,9 @@
 
 #include <string>
 
-class intarface_diplay_class {
+class IntarfaceDisplayClass {
 public:
-    virtual void print_message(const std::string& _msg) = 0;
+    virtual void PrintMessage(const std::string& _msg) = 0;
 private:
 };
 

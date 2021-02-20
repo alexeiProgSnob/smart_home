@@ -3,17 +3,17 @@
 
 #include "display.h"
 
-class default_display_class : public intarface_diplay_class {
+class default_display_class : public IntarfaceDisplayClass {
 public:
     default_display_class();
     ~default_display_class();
-    void print_message(const std::string& _msg);
+    void PrintMessage(const std::string& _msg);
 private:
     default_display_class(const default_display_class&);
     default_display_class& operator=(const default_display_class&);
 };
 
-extern "C" intarface_diplay_class* create() {
+extern "C" IntarfaceDisplayClass* create() {
     return new default_display_class;
 }
 

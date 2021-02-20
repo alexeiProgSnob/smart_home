@@ -5,15 +5,15 @@
 [dll loader template ||]
 [hub||]
 [agent abstract class||]
-[subscriber||]
+[Subscriber||]
 [publisher||]
 [event handler||]
 
 [hub]-->[agent abstract class]
-[hub]o-[subscriber]
+[hub]o-[Subscriber]
 [hub]o-[publisher]
 [hub]o-[event handler]
-[agent abstract class]-->[subscriber]
+[agent abstract class]-->[Subscriber]
 [agent abstract class]-->[publisher]
 
 [init file reader]o-[init file parser]

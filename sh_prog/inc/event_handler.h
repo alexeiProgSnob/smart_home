@@ -7,30 +7,33 @@
 #include <vector> 			// std::vector
 #include <map>				// std::map
 
-#include "subscription.h"	// subscription_struct
-#include "uncopyable.h"		// alexei_prog_snob::uncopyable_class
-#include "event.h"			// event_class
+#include "subscription.h"	// SubscriptionStruct
+#include "event.h"			// EventClass
 
-class event_handler_class : private alexei_prog_snob::uncopyable_class {
+class EventHandlerClass {
 public:
 	/* @description : 	this typename is for all pairs of floor what rooms
 						the agent want to register
 	*/	
-	event_handler_class();
-	~event_handler_class();
+	EventHandlerClass();
+	~EventHandlerClass();
+
+	EventHandlerClass(const EventHandlerClass&) = delete;
+	EventHandlerClass(EventHandlerClass&&) = delete;
+	EventHandlerClass& operator=(const EventHandlerClass&) = delete;
 	
 	/* @description : 
 	*/
-	void register_agent_to_floors_and_rooms(const subscription_struct& _subscription);
+	void RegisterAgentToFloorsAndRooms(const SubscriptionStruct& _subscription);
 
-	void handle_event(std::shared_ptr<event_class> _event);
+	void HandleEvent(std::shared_ptr<EventClass> _event);
 private:
-	typedef typename std::function<void(std::shared_ptr<event_class>)> agent_event_handle;
-	typedef typename std::map<std::string, std::vector<agent_event_handle> > room_event_handles;
-	typedef typename std::map<size_t, room_event_handles> floor_rooms_event_handles;
-	typedef typename std::map<std::string, floor_rooms_event_handles> event_type_subs;
+	typedef typename std::function<void(std::shared_ptr<EventClass>)> AgentEventHandle;
+	typedef typename std::map<std::string, std::vector<AgentEventHandle> > RoomEventHandles;
+	typedef typename std::map<size_t, RoomEventHandles> FloorRoomsEventHandles;
+	typedef typename std::map<std::string, FloorRoomsEventHandles> EventTypeSubs;
 
-	event_type_subs m_subscriber_container;
+	EventTypeSubs m_subscriberContainer;
 };
 
 

@@ -4,26 +4,26 @@
 #include <memory>
 #include <vector>
 
-#include "dll_loader.h"
+#include "aps/templates/dll_loader.h"
 #include "display.h"
 #include "agent.h"
 #include "hub.h"
 
-class smart_home_class{
+class smartHomeClass{
 public:
-	smart_home_class();
-	~smart_home_class();
-	void init_smart_home();
-	void run_smart_home();
+	smartHomeClass();
+	~smartHomeClass();
+	void InitSmartHome();
+	void RunSmartHome();
 private:
-	void agent_so_init();
-	void peripheral_so_init();
+	void p_AgentLibInit();
+	void p_PeripheralLibInit();
 
-	alexei_prog_snob::dll_loader_template<agent_abstract_class> m_so_loader;
-	alexei_prog_snob::dll_loader_template<intarface_diplay_class> m_so_display;
-	std::vector<std::shared_ptr<agent_abstract_class> > m_agents;
-	hub_class m_hub;
-//	singleton_template_class<hub_class> m_hub;
+	alexei_prog_snob::DllLoaderTemplate<AgentAbstractClass> m_libLoader;
+	alexei_prog_snob::DllLoaderTemplate<IntarfaceDisplayClass> m_libDisplay;
+	std::vector<std::shared_ptr<AgentAbstractClass> > m_agents;
+	HubClass m_hub;
+//	singleton_template_class<HubClass> m_hub;
 };
 
 #endif /* SMART_HOME_H__ */

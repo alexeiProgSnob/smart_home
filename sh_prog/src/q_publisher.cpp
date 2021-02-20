@@ -1,15 +1,15 @@
 #include "q_publisher.h"
 
-queue_publisher_class::queue_publisher_class(){
+QueuePublisherClass::QueuePublisherClass(){
 }
 
-queue_publisher_class::~queue_publisher_class(){
+QueuePublisherClass::~QueuePublisherClass(){
 }
 
-void queue_publisher_class::publish(std::shared_ptr<event_class> _event) {
+void QueuePublisherClass::publish(std::shared_ptr<EventClass> _event) {
     m_events.push(_event);
 }
 
-std::shared_ptr<event_class> queue_publisher_class::get_event() {
+std::shared_ptr<EventClass> QueuePublisherClass::GetEvent() {
     return m_events.pop();
 }

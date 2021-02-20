@@ -5,27 +5,28 @@
 #include <memory>
 
 #include "event_handler.h"
-#include "thread_pool.h"
+#include "aps/templates/thread_pool.h"
 #include "q_publisher.h"
-#include "subscriber.h"
+#include "Subscriber.h"
 #include "agent.h"
 
-class hub_class {
+class HubClass {
 public:
-	typedef typename std::vector<std::shared_ptr<agent_abstract_class> > agents_container;
-	hub_class();
-	~hub_class();
-	void init_hub_center(agents_container& _agents);
-	void run_hub_center();
+	typedef typename std::vector<std::shared_ptr<AgentAbstractClass> > AgentsContainer;
+	HubClass();
+	~HubClass();
+	void InitHubCenter(AgentsContainer& _agents);
+	void RunHubCenter();
 private:
 	typedef std::function<void()> Task;
+	void p_SubscribeForTerminate();
+	
 	bool m_terminate;
-	event_handler_class m_event_handler;
-	queue_publisher_class m_publish; 
-	subscriber_class m_subscriber;
-	alexei_prog_snob::thread_pool<Task> m_thread_pool;
-	std::shared_ptr<event_class> m_terminate_event;
-	void subscribe_for_terminate();
+	EventHandlerClass m_eventHandler;
+	QueuePublisherClass m_publish; 
+	SubscriberClass m_subscriber;
+	alexei_prog_snob::ThreadPool<Task> m_threadPool;
+	std::shared_ptr<EventClass> m_terminateEvent;
 };
 
 #endif /* HUB_H_ */

@@ -3,7 +3,7 @@
 
 #include <string>
 
-class event_class {
+class EventClass {
 public:
     typedef enum _priority_enum {
         LOW = 0,
@@ -13,11 +13,11 @@ public:
         LAST
     }priority_enum;
 
-    event_class(std::string&& _type, size_t _floor, std::string&& _room, priority_enum _level)
+    EventClass(std::string&& _type, size_t _floor, std::string&& _room, priority_enum _level)
     : m_type(std::move(_type)), m_floor(_floor), m_room(std::move(_room)), m_level(_level)
     {}
 
-    ~event_class(){}
+    ~EventClass(){}
 
     inline const std::string& get_type() {
         return m_type;
@@ -41,8 +41,8 @@ private:
     std::string m_room;
     priority_enum m_level;
 
-    event_class(const event_class&);
-    event_class operator=(const event_class&);
+    EventClass(const EventClass&);
+    EventClass operator=(const EventClass&);
     
 };
 #endif /* EVENT_H__ */

@@ -4,9 +4,9 @@
 #include <memory>
 #include "event.h"
 
-class ipublisher_class {
+class IPublisherClass {
 public:
-    virtual void publish(std::shared_ptr<event_class> _event) = 0;
+    virtual void publish(std::shared_ptr<EventClass> _event) = 0;
 };
 
 
