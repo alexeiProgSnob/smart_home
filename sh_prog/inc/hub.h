@@ -7,7 +7,7 @@
 #include "event_handler.h"
 #include "aps/templates/thread_pool.h"
 #include "q_publisher.h"
-#include "Subscriber.h"
+#include "subscriber.h"
 #include "agent.h"
 
 class HubClass {

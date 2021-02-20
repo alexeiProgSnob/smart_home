@@ -11,13 +11,13 @@ ambient_fire_class::~ambient_fire_class() {
 
 void ambient_fire_class::alart_of_fire() {
     std::shared_ptr<AgentDataStruct> my_data = get_agentData();
-    while(m_run_agent == true) {
+    while (m_run_agent == true) {
         std::shared_ptr<EventClass> fire_event(new EventClass(
             "Fire",
             my_data->m_floor,
             std::move(my_data->m_room),
             EventClass::HIGH));
-        std::this_thread::sleep_for(std::chrono::seconds(20));
+        std::this_thread::sleep_for (std::chrono::seconds(20));
         m_publisher->publish(fire_event);
     }
 }

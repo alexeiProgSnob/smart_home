@@ -4,7 +4,7 @@
 #include "agent.h"
 #include <memory>
 #include <queue>
-#include "safe_queue.h"
+#include "aps/templates/safe_queue.h"
 
 class fire_alart_class : public AgentAbstractClass {
 public:

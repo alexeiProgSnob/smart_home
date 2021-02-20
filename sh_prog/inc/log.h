@@ -21,7 +21,7 @@ private:
 
 const LogClass g_log;
 
-#define LOG_I(MSG) do{ g_log.log_i(MSG); }while(0);
-#define LOG_E(MSG) do{ g_log.log_e(MSG); }while(0);
+#define LOG_I(MSG) do{ g_log.log_i(MSG); }while (0);
+#define LOG_E(MSG) do{ g_log.log_e(MSG); }while (0);
 
 #endif /* LOG_H_ */

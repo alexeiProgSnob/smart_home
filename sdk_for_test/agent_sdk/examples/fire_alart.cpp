@@ -21,7 +21,7 @@ void fire_alart_class::InitAgent(IPublisherClass& _publisher, ISubscriberClass& 
 
 void fire_alart_class::run_agent() {
     std::cout<<"\nfire_agent start"<<std::endl;
-    while(m_run_agent == true) {
+    while (m_run_agent == true) {
         std::shared_ptr<EventClass> new_event = m_my_recieved_events.pop();
         std::cout<<"\nfire_agent"<<std::endl;
         std::cout<<"type "<<new_event->get_type()<<std::endl;

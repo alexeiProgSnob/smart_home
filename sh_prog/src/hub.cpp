@@ -12,7 +12,7 @@ HubClass::HubClass()
 m_subscriber(m_eventHandler),
 m_terminateEvent(new EventClass("terminate",0,"0", EventClass::HIGH)) {
     shutdown_handler = [this](int signum) {
-        if(signum == SIGINT) {
+        if (signum == SIGINT) {
             m_publish.publish(m_terminateEvent);
             m_terminate = true;
         }
@@ -26,7 +26,7 @@ HubClass::~HubClass() {
 void HubClass::p_SubscribeForTerminate() {
     SubscriptionStruct fire_sub(0, "0");
     auto call_back = [this](std::shared_ptr<EventClass> _event) { 
-        if(_event->get_type() == "terminate") {
+        if (_event->get_type() == "terminate") {
             m_terminate = true;
         }
     };
@@ -39,11 +39,11 @@ void HubClass::p_SubscribeForTerminate() {
 void HubClass::InitHubCenter(AgentsContainer& _agents) {
     p_SubscribeForTerminate();
 
-    m_threadPool.init_thread_pool(_agents.size());
+    m_threadPool.InitThreadPool(_agents.size());
     auto init_do = [this](std::shared_ptr<AgentAbstractClass>& _agent) { 
         _agent->InitAgent(m_publish, m_subscriber);
         Task task = [_agent](){ _agent->run_agent(); };
-        m_threadPool.submit_task(alexei_prog_snob::ThreadPool<Task>::MID, task);
+        m_threadPool.SubmitTask(alexei_prog_snob::ThreadPool<Task>::MID, task);
     };
     std::for_each(_agents.begin(), _agents.end(), init_do);
 }   

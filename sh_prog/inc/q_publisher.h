@@ -3,7 +3,7 @@
 
 #include "interface_publisher.h"
 #include <memory>
-#include "safe_queue.h"
+#include "aps/templates/safe_queue.h"
 
 class QueuePublisherClass : public IPublisherClass {
 public:
